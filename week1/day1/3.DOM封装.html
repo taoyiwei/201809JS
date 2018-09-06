@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="list">
+    <li>111</li>
+    2222
+    <!--5454-->
+    <li>333</li>
+</ul>
+<div id="div1">
+    <span>111</span>
+    <span>222</span>
+    3333
+    <!--444-->
+    <p>3333</p>
+</div>
+</body>
+</html>
+<script>
+    //文档节点（9）  文本节点（3）  注释节点（8） 元素节点（1）
+    //childNodes 所有的子节点
+    //children 所有的子元素节点 （IE8有兼容）
+    //firstChild firstElementChild  lastChild lastElementChild
+    //previousSibling previousElementSibling
+    //nextSibling nextElementSibling
+    //parentNode
+
+
+    /**
+     * 封装下获取某个元素下所有的子元素节点
+     * @param ele 指定的某个元素
+     * @return ary 存放了所有的子元素节点
+     */
+    function getChildren(ele){
+        var ary = [];//存放子元素节点
+        var childs = ele.childNodes;//所有的子节点  元素集合 类数组
+        //拿到每个子节点
+        for(var i = 0;i<childs.length;i++){
+            var cur = childs[i];
+            if(cur.nodeType === 1){ //是元素节点
+                ary[ary.length] = cur;
+            }
+        }
+        return ary;
+    }
+    var oUl = document.getElementById("list");
+    console.log(getChildren(oUl));
+    var oDiv = document.getElementById("div1");
+    console.log(getChildren(oDiv));
+
+
+</script>

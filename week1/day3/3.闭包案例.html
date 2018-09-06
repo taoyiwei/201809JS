@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<input type="button" value="第一个按钮">
+<input type="button" value="第二个按钮">
+<input type="button" value="第三个按钮">
+<input type="button" value="第四个按钮">
+<input type="button" value="第五个按钮">
+</body>
+</html>
+<script>
+    //点击每个按钮时弹出对应的索引
+    var oInputs = document.getElementsByTagName("input");
+    //第一种方案：自定义属性的方法
+    /*for(var i = 0;i<oInputs.length;i++){
+        oInputs[i].zhufeng = i;//把每个按钮的索引保存在自定义属性珠峰上
+        oInputs[i].onclick = function(){
+            alert(this.zhufeng);
+        }
+    }*/
+
+    //第二种方案 ：闭包
+   /* for(var i = 0;i<oInputs.length;i++){
+        (function(i){
+            oInputs[i].onclick = function(){
+                alert(i);
+            }
+        })(i)
+    }*/
+    //es5中{}不表示块级作用域，for循环中{}仅仅表示循环体中的括号，i变量都表示是全局下i,因此事件绑定的方法执行时获取的i是全局下的i
+    // es5中用闭包表示块级作用域
+
+ //第三种方案：闭包
+   /* for(var i = 0;i<oInputs.length;i++){
+        oInputs[i].onclick = function(i){
+            return function(){
+                alert(i);
+            }
+        }(i)
+    }*/
+
+    //第四种方案：闭包   图跟方案二一样
+    /*for(var i = 0;i<oInputs.length;i++){
+        changeTab(i);
+    }
+    function changeTab(i){
+        oInputs[i].onclick = function(){
+            alert(i);
+        }
+    }*/
+
+    //第五种方案：es6
+    //声明变量es5 var  es6 let  for循环中的{}表示块级作用域
+
+    for(let i = 0;i<oInputs.length;i++ ){
+        oInputs[i].onclick = function(){
+            alert(i);
+        }
+    }
+
+    //var和let区别 (变量)
+    //1.let没有变量提升 变量必须是声明后再用
+    //2.在当前作用域中，es6中不允许重名变量，有重名变量会报错
+
+    //const和var区别  const表示常量(固定的值)
+    //1.const没有变量提升 变量必须是声明后再用
+    //2.在当前作用域中，es6中不允许重名变量，有重名变量会报错
+    //3.不可以重新赋值
+
+
+
+
+
+</script>

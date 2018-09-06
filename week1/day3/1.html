@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //闭包的第一种形式：自执行函数
+    var name = "lily";
+    var age = 18;
+    ~(function(name,age){ //传参是为了拿到外界的内容
+        var name = "aa";
+        var age =20;
+        window.cc = window.aa = name;//把需要暴露给外界的内容，作为window的属性
+    })(name,age);
+
+    console.log(aa);
+    console.log(cc);
+
+
+    function fn(){
+        var num = 5;
+        return function(){
+            num++;
+            console.log(num);
+        }
+    }
+
+    //utils是一个模块
+    var utils = (function(){
+        var name = "lily"; //私有的变量
+        function login(){console.log("login")}
+        function register(){console.log("register")} //私有的方法
+        return {
+            login:login
+        }
+    })();
+    utils.login(); //调用里面方法 模块名.方法名()
+
+
+
+
+</script>

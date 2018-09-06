@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1">你的中奖号是: <span></span></div>
+</body>
+</html>
+<script>
+    function sum(){
+        var total = null;//用来保存累加的值
+        for(var i = 0;i<arguments.length;i++){
+            var cur = arguments[i];
+            if(!isNaN(cur)){
+                total+=Number(cur);
+            }
+        }
+        return total;
+    }
+    console.log(sum(10, 20, "a", "111"));
+
+    function fn(num){
+        if(num == 1){ //递归调用边界判断
+            return 0;
+        }
+        if(num%3==0 && num%5==0){
+            return num+fn(num-1);
+        }else{
+            return fn(num-1);
+        }
+    }
+    console.log(fn(100));
+
+    //从0-9之间取一个随机的不重复的四位整数,这四位整数存放一个字符串中
+    function getNumber(){
+        var ary = [];
+        while(ary.length<4){
+            var cur = Math.round(Math.random()*9);//取出的随机整数
+            if(ary.indexOf(cur)==-1){ //说明数组没有这一项
+                ary.push(cur);
+            }
+        }
+        return ary.join("");//把数组的每一项靠一起返回
+    }
+    var oSpan  = document.querySelector("#div1>span");
+    oSpan.innerHTML = getNumber();
+    var i = 0;//为了知道现在是第几秒
+    var timer = window.setInterval(function(){
+        i++;
+        oSpan.innerHTML = getNumber();
+        if(i ==10){
+            clearInterval(timer);
+            timer = null;
+        }
+    },1000);
+
+    var str = "aaa";
+    str[0];
+
+
+</script>

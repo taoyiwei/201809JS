@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<ul id="list">
+    <li>0000</li>
+    <li>111</li>
+    2222
+    <!--5454-->
+    <li id="li3">333</li>
+</ul>
+<div id="div1">
+    <span>111</span>
+    <span>222</span>
+    3333
+    <!--444-->
+    <p>3333</p>
+</div>
+</body>
+</html>
+<script>
+    //不能用 previousElementSibling   只能用previousSibling
+    /**
+     * 获取指定元素的相邻的哥哥元素节点
+     * @param ele 指定的元素
+     * @return 哥哥元素节点
+     */
+    function getPrev(ele){
+        var pre = ele.previousSibling;//哥哥节点  若找不到null
+       while(pre){
+           if(pre.nodeType === 1){
+               return pre;
+           }
+            pre = pre.previousSibling;
+        }
+        return pre; //标识下，告诉别人没有找到，返回null
+    }
+    var oLi3 = document.getElementById("li3");
+    console.log(getPrev(oLi3));//打印出第一个li
+
+    //思考题：1.指定元素的所有的哥哥元素节点（返回值数组）
+    // 2.指定元素的索引
+
+
+
+
+
+
+
+</script>

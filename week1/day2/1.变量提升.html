@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    /*console.log(num);//undefined  说明在执行下一行代码之前在浏览器内存中已有变量num
+    var num = 10;
+    console.log(num);
+
+    fn();//1
+    function fn(){
+        console.log(1);
+    }*/
+
+    /*var n=13;
+    function fn(n){ //形参n和带var的变量n是同一个
+        alert(n);
+        var n=14;
+        alert(n);
+    }
+    fn(n);
+    alert(n)*/
+
+    /*var n = 13;
+    function fn(){
+        console.log(n); //undefined
+        var n = 14;
+        console.log(n);//14
+    }
+    fn();*/
+
+    var n = 13;
+    function fn(){
+        alert(n);//13
+        n = 14; //把全局下n改成14
+        alert(n);//14
+    }
+    fn();
+    alert(n);//14
+
+    //全局作用域下 带var和不带var的区别 var m = 13和m = 13
+    //不同之处：带var会进行变量提升 不带var没有变量提升
+    //相同之处：都是window的属性，是全局变量
+    var m = 13;
+    m = 13;
+    console.log("m" in window);//true
+
+   var a = 10;
+    function outer(){
+         alert(a);
+         a = 5;
+        function inner(){
+            alert(a);
+            a = 9;
+            alert(a);
+        }
+        inner();
+    }
+    outer();
+
+
+</script>

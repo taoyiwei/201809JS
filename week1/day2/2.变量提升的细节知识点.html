@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    //console.log(fn);//undefined
+    //fn();//报错
+//    var fn = function fn(){ //函数表达式
+//        console.log(1);
+//    }
+//    fn();//执行要在函数表达式下面
+
+    //2.-> return 后面不进行变量提升，但是return下面的还是要变量提升
+    /*function fn(){
+        console.log(num);//undefined
+        console.log(sum);//报错
+        return function sum(){
+            console.log(1);
+        }
+        var num = 10;
+    }
+    fn();*/
+
+    //3.->重名变量不会重复声明，但是会重复赋值
+    /*console.log(a);//function a(){}
+    var a = 10;
+    function a(){
+        console.log(1);
+    }
+    console.log(a);*///10
+
+
+    /*console.log(a);//function a(){}
+    function a(){
+        console.log(1);
+    }
+    var a = 10;
+    console.log(a);*///10
+
+
+    /*var a = 10;
+    var a = 20;//把变量a的值改成20
+    console.log(a);
+
+    var a = 10;
+    a = 20;//把变量a的值改成20
+    console.log(a)*/
+
+    /*fn();//2
+    function fn(){console.log(1)};
+    fn();//2
+    var fn = 13;
+    fn();//报错
+    function fn(){console.log(2)};
+    fn();*/
+
+    //4.自执行函数本身不进行变量提升，里面还是进行变量提升
+    //自执行函数 = 定义+执行一起操作
+    //console.log(f);//报错
+    ;(function f(){
+        //console.log(sum);//undefined
+        var sum = 10;
+    })();
+
+    //5.不管条件是否成立，对带var关键字的进行声明 对function关键字 标准浏览器只声明不定义，IE浏览器下是声明+定义
+    /*console.log(a);//undefined
+    if(!("a" in window)){
+        var a = 10;
+    }
+    console.log(a);*///undefined
+
+    console.log(fn);//标准浏览器 undefined IE浏览器下 function fn(){}
+    if(9==8){
+        function fn(){
+            console.log(1);
+        }
+    }
+
+
+</script>

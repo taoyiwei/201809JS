@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+</body>
+</html>
+<script>
+    var name = '珠峰';
+    var age = 300;
+    name = (function (name, age) {   //把自执行函数的返回值赋值给变量name
+        arguments[0] = '珠峰培训';
+        age = age && 10;
+        console.log(name, age);
+    })(name);
+    console.log(name, age)
+</script>

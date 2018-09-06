@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        ul li{
+            height:40px;
+            line-height:40px;
+            border-bottom:1px dashed #ccc;
+        }
+        .bg0{
+            background:red;
+        }
+        .bg1{
+            background:green;
+        }
+        .bg2{
+            background:pink;
+        }
+    </style>
+</head>
+<body>
+<ul id="ul1">
+    <li>11</li>
+    <li>22</li>
+    <li>33</li>
+    <li>44</li>
+    <li>55</li>
+</ul>
+
+</body>
+</html>
+<script>
+    //奇数行红色|偶数行绿色
+    var oUl = document.getElementById("ul1");
+    var oLis = oUl.getElementsByTagName("li");//元素集合 类数组
+    for(var i = 0;i<oLis.length;i++){
+        var oLi = oLis[i];//每一个li
+        if(i%2==0){//索引是偶数，是奇数行
+            oLi.className = "bg0";
+        }else{//索引是奇数 ，是偶数行
+            oLi.className = "bg1";
+        }
+        //自定义属性的方式保存原来的类名
+        oLi.zhufeng = oLi.className;
+        oLi.index = i;//把索引保存在自定义属性index
+        oLi.onmouseover= function(){//划过时
+            this.className = "bg2";
+        }
+        oLi.onmouseout = function(){//划出时
+            this.className = this.zhufeng;
+        }
+        oLi.onclick = function(){
+            alert("我是第"+(this.index+1)+"个");
+        }
+
+    }
+
+
+</script>

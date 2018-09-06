@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="div1">1111</div>
+</body>
+</html>
+<script>
+    //1.看方法名前面有没有点，若没有则this是window,若有点，点前面是谁this就是谁
+    /*function fn(){
+        console.log(this);
+    }
+    var obj = {
+        num:20,
+        fn:fn
+    }
+    obj.fn();
+    fn();*/
+
+    /*var num = 10;
+    var obj = {
+        num:20,
+        fn:(function(num){
+            console.log(num);
+        })(obj.num) //报错
+    }*/
+
+    //2.->自执行函数的this是window
+    var num = 10;
+    var obj = {
+        num:20,
+        fn:(function(){
+            console.log(this);
+        })()
+    }
+    ;(function(){
+        console.log(this);
+    })();
+
+    //3.->事件绑定函数中是this是绑定的元素
+    var oDiv = document.getElementById("div1");
+    oDiv.onclick = function(){
+        console.log(this);
+    }
+
+
+
+</script>
